@@ -47,9 +47,8 @@ export default function Hero({
         </div>
         <div aria-hidden className="relative sm:pt-[4rem]">
           <img
-            src="/appointment-booking-illustration.png"
-            alt="Booking illustration"
-            className="w-full rounded-xl transition-transform duration-500 hover:-translate-y-1"
+            src="/Book-online-doctor-appointment-unscreen.gif"
+            className="w-full rounded-xl transition-transform duration-500 hover:-translate-y-1 bg-white"
           />
         </div>
       </div>
