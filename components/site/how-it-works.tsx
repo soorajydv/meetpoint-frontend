@@ -1,37 +1,66 @@
+'use client'
+
+import Link from 'next/link'
 import { Bell, CalendarClock, Clock, Coins, User, Video } from 'lucide-react'
+import React from 'react';
 
 export default function HowItWorks() {
+  const steps = [
+    { icon: <User />, title: "Register", href: "/register" },
+    { icon: <Coins />, title: "Buy coins" },
+    { icon: <CalendarClock />, title: "Book a slot" },
+    { icon: <Video />, title: "Start session" },
+  ];
+
   return (
-    <section id="how" className="container mx-auto px-4 py-16">
-      <div className="text-center mb-8">
+    <section id="how" className="container mx-auto px-4 py-[16rem]">
+      <div className="text-center mb-15">
         <h2 className="text-2xl md:text-3xl font-bold">How it works</h2>
-        <p className="text-muted-foreground">From registration to your session in a few simple steps</p>
+        <p className="text-muted-foreground">
+          From registration to your session in a few simple steps
+        </p>
       </div>
 
-      {/* Transparent steps (no cards, no borders) */}
-      <div className="grid md:grid-cols-3 gap-6">
-        <Step icon={<User className="h-5 w-5 text-teal-700 dark:text-teal-400" />} title="Register" desc="Sign up as a client or professional. No dashboard to learn." />
-        <Step icon={<Clock className="h-5 w-5 text-teal-700 dark:text-teal-400" />} title="Set availability" desc="Pros set weekly time ranges once; slots repeat weekly." />
-        <Step icon={<Coins className="h-5 w-5 text-teal-700 dark:text-teal-400" />} title="Buy coins" desc="1 coin = 1 NPR. Pay via eSewa, PayPal, or Stripe." />
-      </div>
+      <div className="flex flex-col md:flex-row md:flex-wrap md:justify-center gap-8 relative">
+        {steps.map((step, index) => {
+          const content = (
+            <div className="flex flex-col items-center text-center">
+              {/* Icon badge */}
+              <div className="flex items-center justify-center w-12 h-12 rounded-full bg-teal-700 text-white font-bold mb-4 dark:bg-teal-400 dark:text-black shrink-0">
+                {React.cloneElement(step.icon, { className: "h-6 w-6" })}
+              </div>
 
-      <div className="mt-4 grid md:grid-cols-3 gap-6">
-        <Step icon={<CalendarClock className="h-5 w-5 text-teal-700 dark:text-teal-400" />} title="Book a slot" desc="Pick a date/time and communication method." />
-        <Step icon={<Bell className="h-5 w-5 text-teal-700 dark:text-teal-400" />} title="Get notified" desc="Immediate confirmation + reminder before start." />
-        <Step icon={<Video className="h-5 w-5 text-teal-700 dark:text-teal-400" />} title="Start session" desc="Chat, audio, or video when time begins." />
+              {/* Step */}
+              <div className="font-medium text-lg">{step.title}</div>
+            </div>
+          );
+
+          return (
+            <div
+              key={index}
+              className="flex-1 min-w-[250px] md:max-w-[300px] flex flex-col items-center text-center relative"
+            >
+              {/* Wrap content in Link or div with full width and center alignment */}
+              {step.href ? (
+                <Link href={step.href} className="block w-full">
+                  {content}
+                </Link>
+              ) : (
+                <div className="block w-full">
+                  {content}
+                </div>
+              )}
+
+              {/* Arrow for desktop only */}
+              {index < steps.length - 1 && (
+                <div className="hidden md:block absolute top-6 right-[-35px] text-teal-400 select-none pointer-events-none">
+                  ➡
+                </div>
+              )}
+            </div>
+          );
+        })}
       </div>
     </section>
-  )
-}
-
-function Step({ icon, title, desc }: { icon: React.ReactNode; title: string; desc: string }) {
-  return (
-    <div className="flex items-start gap-3">
-      <div className="rounded-md bg-teal-50 dark:bg-teal-500/10 p-2">{icon}</div>
-      <div>
-        <div className="font-medium">{title}</div>
-        <p className="text-sm text-muted-foreground">{desc}</p>
-      </div>
-    </div>
   )
 }

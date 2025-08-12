@@ -18,7 +18,6 @@ import { generateSlotsForDay } from '@/lib/availability'
 import Navbar from '@/components/site/navbar'
 import Hero from '@/components/site/hero'
 import HowItWorks from '@/components/site/how-it-works'
-import RegisterSection from '@/components/site/register-section'
 import ProsSection from '@/components/site/pros-section'
 import PricingSection from '@/components/site/pricing-section'
 import FAQSection from '@/components/site/faq-section'
@@ -28,6 +27,8 @@ import BuyCoinsDialog from '@/components/site/dialogs/buy-coins-dialog'
 import BookDialog from '@/components/site/dialogs/book-dialog'
 import SessionModal from '@/components/site/dialogs/session-modal'
 import { ChevronRight, MessageSquare, Mic, Video } from 'lucide-react'
+import RegisterSection from './register/page'
+import { AppDownload } from '@/components/site/AppDownload'
 
 const defaultAvailability: WeeklyAvailability = {
 slotDurationMinutes: 30,
@@ -257,7 +258,7 @@ return (
       onExplore={() => scrollToId('pros')}
     />
 
-    <section id="hero-metrics" className="container mx-auto px-4 mt-8 grid sm:grid-cols-3 gap-4">
+    {/* <section id="hero-metrics" className="container mx-auto px-4 mt-8 grid sm:grid-cols-3 gap-4">
       <div className="flex items-center gap-3">
         <div className="rounded-md bg-teal-50 dark:bg-teal-500/10 p-2">
           <User className="h-5 w-5 text-teal-700 dark:text-teal-400" />
@@ -289,11 +290,11 @@ return (
 
     <div className="container mx-auto px-4 mt-4 text-xs text-muted-foreground">
       Note: For production Web Push, add VAPID keys and server actions to manage subscriptions and send notifications.
-    </div>
+    </div> */}
 
     <HowItWorks />
 
-    <RegisterSection
+    {/* <RegisterSection
       clients={clients}
       currentClientId={currentClientId}
       setCurrentClientId={setCurrentClientId}
@@ -301,7 +302,7 @@ return (
       handleProRegister={handleProRegister}
       handleClientRegister={handleClientRegister}
       setClients={setClients}
-    />
+    /> */}
 
     <ProsSection
       loadingPros={loadingPros}
@@ -313,16 +314,17 @@ return (
       setQuery={setQuery}
     />
 
-    <PricingSection
+    {/* <PricingSection
       onSelectAmount={(amt) => setBuyAmount(amt)}
       onOpenPurchase={() => setBuyOpen(true)}
-    />
+    /> */}
 
     <FAQSection />
 
-    <TestimonialsSection />
+    {/* <TestimonialsSection /> */}
   </main>
 
+    <AppDownload/>
   <Footer onNav={(id) => scrollToId(id)} />
 
   {/* Buy Coins */}

@@ -13,11 +13,11 @@ export default function Hero({
   onExplore: () => void
 }) {
   return (
-    <section id="hero" className="container mx-auto px-4 pt-12 md:pt-16">
+    <section id="hero" className="container mx-auto pt-12 md:pt-16 mt-[5rem]">
       <div className="grid lg:grid-cols-2 gap-8 items-center">
         <div>
           <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight">
-            Book trusted professionals — all from one landing page
+            Book trusted professionals in few clicks
           </h1>
           <p className="mt-3 text-muted-foreground max-w-prose">
             Set weekly availability, buy coins, and book chat, audio, or video sessions. Simple, fast, and secure.
@@ -35,20 +35,20 @@ export default function Hero({
               </Button>
             )}
           </div>
-          <div className="mt-6 flex items-center gap-4 text-sm">
+          {/* <div className="mt-6 flex items-center gap-4 text-sm">
             <div className="flex items-center gap-1 text-amber-500">
               <Star className="h-4 w-4 fill-amber-500" /><Star className="h-4 w-4 fill-amber-500" /><Star className="h-4 w-4 fill-amber-500" /><Star className="h-4 w-4 fill-amber-500" /><Star className="h-4 w-4 fill-amber-500" />
             </div>
             <div className="text-muted-foreground">Loved by clients and professionals</div>
-          </div>
+          </div> */}
         </div>
         <div aria-hidden className="relative">
           <img
             src="/appointment-booking-illustration.png"
             alt="Booking illustration"
-            className="w-full rounded-xl shadow-lg ring-1 ring-black/5 transition-transform duration-500 hover:-translate-y-1"
+            className="w-full rounded-xl  transition-transform duration-500 hover:-translate-y-1"
           />
-          <div className="absolute -bottom-4 -left-4 hidden md:block">
+          {/* <div className="absolute -bottom-4 -left-4 hidden md:block">
             <div className="bg-white/80 dark:bg-slate-900/70 backdrop-blur rounded-xl border p-3 shadow-sm">
               <div className="flex items-center gap-3">
                 <div className="rounded-md bg-teal-50 dark:bg-teal-500/10 p-2">
@@ -60,7 +60,7 @@ export default function Hero({
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div> 
     </section>

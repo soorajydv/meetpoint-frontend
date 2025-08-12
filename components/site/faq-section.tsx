@@ -2,7 +2,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 
 export default function FAQSection() {
   return (
-    <section id="faq" className="container mx-auto px-4 py-12">
+    <section id="faq" className="container mx-auto px-4">
       <div className="text-center mb-6">
         <h2 className="text-2xl md:text-3xl font-bold">Frequently asked questions</h2>
       </div>

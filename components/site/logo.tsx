@@ -1,10 +1,13 @@
-import { CalendarClock } from 'lucide-react'
-
 export default function Logo() {
   return (
     <div className="flex items-center gap-2">
-      <CalendarClock className="h-6 w-6 text-teal-600 dark:text-teal-400" />
+      <img
+        src="/logo.png"
+        alt="Meetpoint Logo"
+        className="h-10 w-6 object-contain"
+      />
       <span className="font-semibold">Meetpoint</span>
     </div>
   )
 }
+
