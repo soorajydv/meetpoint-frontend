@@ -31,7 +31,7 @@ export const AppDownload: React.FC = () => {
     return (
         <div
             ref={ref}
-            className="relative h-[40rem] m-6 flex flex-col items-center justify-center w-full text-black text-center px-4 sm:px-20 overflow-hidden"
+            className="relative h-[40rem] flex flex-col items-center justify-center w-full text-black text-center px-4 sm:px-20 overflow-hidden"
         >
             {/* Background Overlay */}
             <div
@@ -55,12 +55,14 @@ export const AppDownload: React.FC = () => {
 
             {/* Content above overlay */}
             <div className="relative z-10 mt-12 lg:mt-0 mb-6 lg:mb-0">
-                <h2 className="text-4xl font-semibold text-[#007640]">
-                    Even More Handy With
-                </h2>
-                <h2 className="text-4xl font-semibold mt-1 dark:text-white ">MeetPoint Apps</h2>
-                <p className="text-xl mt-0 lg:mt-4 text-[#565657]">Your schedules are always with you</p>
-
+                <div>
+                    <h2 className="text-4xl font-semibold text-[#007640]">
+                        Even More Handy With
+                    </h2>
+                    <h2 className="text-4xl font-semibold mt-1 dark:text-white ">MeetPoint Apps</h2>
+                    <p className="text-xl mt-0 lg:mt-4 text-[#565657]">Your schedules are always with you</p>
+                </div>
+                
                 <div className="flex flex-wrap md:flex-col lg:flex-row w-[70vw] justify-center gap-4 mt-10">
                     <GooglePlayButton />
                     <AppStoreButton />

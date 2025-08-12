@@ -61,7 +61,7 @@ export default function ProsSection({
   }, [selectedPro, appointments])
 
   return (
-    <section id="pros" className="container mx-auto px-4 pb-[10rem]">
+    <section id="pros" className="container mx-auto px-4 py-[6rem]">
       {/* Centered Heading */}
       <div className="flex flex-col items-center justify-center mb-6 text-center">
         <h2 className="text-2xl md:text-3xl font-bold">Popular professionals</h2>
@@ -93,12 +93,7 @@ export default function ProsSection({
 
       {/* Professionals Container */}
       <div
-        className={`flex gap-4 flex-wrap transition-all duration-300 ${filteredPros.length <= 3 ? 'justify-center' : 'justify-start'
-          }`}
-        style={{
-          maxWidth: filteredPros.length <= 3 ? '80%' : '100%',
-          margin: '0 auto',
-        }}
+        className="flex gap-4 flex-wrap transition-all duration-300 justify-center"
       >
         {/* Loading Skeleton */}
         {loadingPros &&
@@ -148,7 +143,7 @@ export default function ProsSection({
             <div
               key={pro.id}
               onClick={() => setSelectedPro(pro)}
-              className="flex min-w-sm flex-col items-center cursor-pointer p-4 rounded-md hover:bg-teal-50 dark:hover:bg-slate-800 transition-colors flex-shrink-0"
+              className="flex min-w-sm flex-col items-center cursor-pointer p-4 rounded-md hover:bg-teal-50 hover:border dark:hover:bg-slate-800 transition-colors flex-shrink-0"
               title={`Click to view details of ${pro.name}`}
             >
               <img

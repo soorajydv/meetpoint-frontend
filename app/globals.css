@@ -2,7 +2,14 @@
 @import 'tw-animate-css';
 
 @custom-variant dark (&:is(.dark *));
+/* globals.css or your main CSS */
+@layer base {
 
+  html,
+  body {
+    overflow-x: hidden;
+  }
+}
 :root {
   --background: oklch(0.98 0.01 270);
   /* soft white */

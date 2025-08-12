@@ -1,13 +1,17 @@
 export default function Logo() {
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex items-center gap-4">
       <img
         src="/logo.png"
         alt="Meetpoint Logo"
-        className="h-10 w-6 object-contain"
+        className="h-14 w-auto object-contain"
       />
-      <span className="font-semibold">Meetpoint</span>
+      <span
+        className="font-extrabold text-2xl"
+        style={{ fontFamily: "Helvetica" }}
+      >
+        Meetpoint
+      </span>
     </div>
   )
 }
-

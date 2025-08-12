@@ -1,4 +1,4 @@
-import { ArrowRight, BellRing, Star } from 'lucide-react'
+import { ArrowRight, BellRing } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
 export default function Hero({
@@ -13,8 +13,17 @@ export default function Hero({
   onExplore: () => void
 }) {
   return (
-    <section id="hero" className="container mx-auto pt-12 md:pt-16 mt-[5rem]">
-      <div className="grid lg:grid-cols-2 gap-8 items-center">
+    <section
+      id="hero"
+      className="container mx-auto p-5 pt-10 md:pt-16"
+      style={{
+        minHeight: 'calc(100vh - 64px)', // full viewport height minus navbar height
+        display: 'flex',
+        alignItems: 'center', // vertical center
+        justifyContent: 'center', // horizontal center
+      }}
+    >
+      <div className="grid lg:grid-cols-2 gap-8 items-center w-full">
         <div>
           <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight">
             Book trusted professionals in few clicks
@@ -35,34 +44,15 @@ export default function Hero({
               </Button>
             )}
           </div>
-          {/* <div className="mt-6 flex items-center gap-4 text-sm">
-            <div className="flex items-center gap-1 text-amber-500">
-              <Star className="h-4 w-4 fill-amber-500" /><Star className="h-4 w-4 fill-amber-500" /><Star className="h-4 w-4 fill-amber-500" /><Star className="h-4 w-4 fill-amber-500" /><Star className="h-4 w-4 fill-amber-500" />
-            </div>
-            <div className="text-muted-foreground">Loved by clients and professionals</div>
-          </div> */}
         </div>
-        <div aria-hidden className="relative">
+        <div aria-hidden className="relative sm:pt-[4rem]">
           <img
             src="/appointment-booking-illustration.png"
             alt="Booking illustration"
-            className="w-full rounded-xl  transition-transform duration-500 hover:-translate-y-1"
+            className="w-full rounded-xl transition-transform duration-500 hover:-translate-y-1"
           />
-          {/* <div className="absolute -bottom-4 -left-4 hidden md:block">
-            <div className="bg-white/80 dark:bg-slate-900/70 backdrop-blur rounded-xl border p-3 shadow-sm">
-              <div className="flex items-center gap-3">
-                <div className="rounded-md bg-teal-50 dark:bg-teal-500/10 p-2">
-                  <ArrowRight className="h-4 w-4 text-teal-700 dark:text-teal-400" />
-                </div>
-                <div className="text-sm">
-                  <div className="font-medium">Smart reminders</div>
-                  <div className="text-xs text-muted-foreground">Push + in-app before sessions</div>
-                </div>
-              </div>
-            </div>
-          </div> */}
         </div>
-      </div> 
+      </div>
     </section>
   )
 }

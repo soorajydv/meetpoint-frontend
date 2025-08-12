@@ -37,7 +37,7 @@ export default function BookDialog({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-lg">
+      <DialogContent className="max-w-[90vw] p-4">
         <DialogHeader>
           <DialogTitle>Book {pro.name}</DialogTitle>
           <DialogDescription>{pro.specialty} • {fee} coins • Slot {pro.availability.slotDurationMinutes} min</DialogDescription>

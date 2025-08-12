@@ -2,7 +2,7 @@
 
 import { useState } from 'react'; // Removed useEffect to avoid side effects
 import type { InAppNotification } from '@/lib/types';
-import { Bell, X } from 'lucide-react';
+import { Bell, BellOff, X } from 'lucide-react';
 
 // Move timeAgo to a client-side utility or compute it after hydration
 function timeAgo(dateInput: string | number, nowDate: Date = new Date()) {
@@ -40,7 +40,7 @@ export default function NotificationSidebar({
       <button
         onClick={handleOpen}
         aria-label="Open notifications"
-        className="relative p-2 rounded-md hover:bg-accent hover:text-accent-foreground cursor-pointer transition-colors"
+        className="relative p-3 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-teal-500 transition-colors duration-200 cursor-pointer"
       >
         <Bell className="h-5 w-5" />
         {unread > 0 && (
@@ -54,15 +54,17 @@ export default function NotificationSidebar({
         <>
           <div
             onClick={() => setOpen(false)}
-            className="fixed inset-0 z-50 bg-black/30 transition-opacity"
+            className="inset-0 z-50 bg-black/30 transition-opacity"
             aria-hidden="true"
           />
           <aside
-            className={`fixed top-0 right-0 z-60 h-screen w-80 max-w-full bg-white/70 backdrop-blur-md border-l border-gray-200 dark:bg-slate-900/70 dark:border-slate-700 flex flex-col transition-transform ${open ? 'translate-x-0' : 'translate-x-full'
+            className={`fixed top-0 right-0 z-60 h-screen w-65 max-w-full bg-white/85 backdrop-blur-md border-l
+               border-gray-200 dark:bg-slate-900/70 dark:border-slate-700 flex flex-col transition-transform 
+               ${open ? 'translate-x-0 bg-gradient-to-b from-white via-teal-200 to-white' : 'translate-x-full'
               }`}
           >
-            <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-slate-700">
-              <h2 className="text-lg font-semibold">Notifications</h2>
+            <div className="flex items-center justify-between p-4 mt-3  border-gray-200 dark:border-slate-700">
+              <h2 className="text-2xl font-semibold">Notifications</h2>
               <button
                 onClick={() => setOpen(false)}
                 aria-label="Close notifications"
@@ -72,18 +74,17 @@ export default function NotificationSidebar({
               </button>
             </div>
 
-            <p className="px-4 py-2 text-sm text-muted-foreground border-b border-gray-200 dark:border-slate-700">
-              In-app updates about your bookings.
-            </p>
-
             <div className="flex-1 overflow-y-auto p-4 space-y-3">
               {items.length === 0 && (
-                <div className="text-sm text-muted-foreground">No notifications yet.</div>
+                <div className="flex flex-col items-center justify-center gap-2 text-sm text-muted-foreground py-6">
+                  <BellOff className="h-8 w-8 text-muted-foreground opacity-60" />
+                  No notifications yet.
+                </div>
               )}
               {items.map((n) => (
                 <div
                   key={n.id}
-                  className="relative rounded-md border border-gray-700 dark:border-slate-700 p-3 bg-white/80 backdrop-blur-lg"
+                  className="relative rounded-md border border-gray-700 dark:border-slate-700 p-3 bg-white/100 backdrop-blur-3xl"
                 >
                   <span className="absolute top-2 right-2 inline-block rounded-full bg-teal-600 px-2 py-0.5 text-[10px] font-semibold text-white">
                     {timeAgo(n.createdAt)}
