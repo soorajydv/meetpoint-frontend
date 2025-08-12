@@ -1,10 +1,9 @@
 'use client'
 
-import { useState } from 'react'; // Removed useEffect to avoid side effects
+import { useState } from 'react';
 import type { InAppNotification } from '@/lib/types';
 import { Bell, BellOff, X } from 'lucide-react';
 
-// Move timeAgo to a client-side utility or compute it after hydration
 function timeAgo(dateInput: string | number, nowDate: Date = new Date()) {
   const date = new Date(dateInput);
   const seconds = Math.floor((nowDate.getTime() - date.getTime()) / 1000);
@@ -29,7 +28,6 @@ export default function NotificationSidebar({
 }) {
   const [open, setOpen] = useState(false);
 
-  // Call onOpen only when opening, avoiding useEffect
   const handleOpen = () => {
     setOpen(true);
     onOpen();
@@ -42,7 +40,7 @@ export default function NotificationSidebar({
         aria-label="Open notifications"
         className="relative p-3 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-teal-500 transition-colors duration-200 cursor-pointer"
       >
-        <Bell className="h-5 w-5" />
+        <Bell className="h-5 w-5 text-gray-700 dark:text-gray-300" />
         {unread > 0 && (
           <span className="absolute -top-1 -right-1 inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-teal-600 px-1 text-[10px] font-semibold text-white">
             {unread}
@@ -52,25 +50,25 @@ export default function NotificationSidebar({
 
       {open && (
         <>
+          {/* Dark mode aware overlay */}
           <div
             onClick={() => setOpen(false)}
-            className="inset-0 z-50 bg-black/30 transition-opacity"
+            className="inset-0 z-50 bg-black/40 dark:bg-black/70 transition-opacity"
             aria-hidden="true"
           />
           <aside
-            className={`fixed top-0 right-0 z-60 h-screen w-65 max-w-full bg-white/85 backdrop-blur-md border-l
-               border-gray-200 dark:bg-slate-900/70 dark:border-slate-700 flex flex-col transition-transform 
-               ${open ? 'translate-x-0 bg-gradient-to-b from-white via-teal-200 to-white' : 'translate-x-full'
-              }`}
+            className={`fixed top-0 right-0 z-60 h-screen w-67 lg:w-90 max-w-full
+              bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-l border-gray-200 dark:border-slate-700
+              flex flex-col transition-transform ${open ? 'translate-x-0' : 'translate-x-full'}`}
           >
-            <div className="flex items-center justify-between p-4 mt-3  border-gray-200 dark:border-slate-700">
-              <h2 className="text-2xl font-semibold">Notifications</h2>
+            <div className="flex items-center justify-between p-4 mt-3 border-b border-gray-200 dark:border-slate-700">
+              <h2 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">Notifications</h2>
               <button
                 onClick={() => setOpen(false)}
                 aria-label="Close notifications"
                 className="p-1 rounded-md hover:bg-gray-200 dark:hover:bg-slate-800 transition"
               >
-                <X className="h-5 w-5" />
+                <X className="h-5 w-5 text-gray-700 dark:text-gray-300" />
               </button>
             </div>
 
@@ -84,13 +82,13 @@ export default function NotificationSidebar({
               {items.map((n) => (
                 <div
                   key={n.id}
-                  className="relative rounded-md border border-gray-700 dark:border-slate-700 p-3 bg-white/100 backdrop-blur-3xl"
+                  className="relative rounded-md border border-gray-300 dark:border-slate-700 p-3 bg-white dark:bg-slate-800"
                 >
-                  <span className="absolute top-2 right-2 inline-block rounded-full bg-teal-600 px-2 py-0.5 text-[10px] font-semibold text-white">
+                  <span className="absolute top-2 right-2 inline-block rounded-full bg-teal-600 px-2 py-0.5 text-[8px] lg:text-[9px] font-semibold text-white">
                     {timeAgo(n.createdAt)}
                   </span>
-                  <div className="text-sm font-medium text-black">{n.title}</div>
-                  <div className="text-xs text-muted-foreground mt-1">{n.body}</div>
+                  <div className="text-sm font-medium text-gray-900 dark:text-gray-100">{n.title}</div>
+                  <div className="text-xs text-muted-foreground dark:text-gray-400 mt-1">{n.body}</div>
                 </div>
               ))}
             </div>
