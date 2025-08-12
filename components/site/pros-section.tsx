@@ -61,7 +61,7 @@ export default function ProsSection({
   }, [selectedPro, appointments])
 
   return (
-    <section id="pros" className="container mx-auto px-4 pb-[16rem]">
+    <section id="pros" className="container mx-auto px-4 pb-[10rem]">
       {/* Centered Heading */}
       <div className="flex flex-col items-center justify-center mb-6 text-center">
         <h2 className="text-2xl md:text-3xl font-bold">Popular professionals</h2>
@@ -93,9 +93,8 @@ export default function ProsSection({
 
       {/* Professionals Container */}
       <div
-        className={`flex gap-4 flex-wrap transition-all duration-300 ${
-          filteredPros.length <= 3 ? 'justify-center' : 'justify-start'
-        }`}
+        className={`flex gap-4 flex-wrap transition-all duration-300 ${filteredPros.length <= 3 ? 'justify-center' : 'justify-start'
+          }`}
         style={{
           maxWidth: filteredPros.length <= 3 ? '80%' : '100%',
           margin: '0 auto',
