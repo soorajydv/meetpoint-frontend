@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'; // Removed useEffect to avoid side effects
+import { useEffect, useRef, useState } from 'react'; // Removed useEffect to avoid side effects
 import type { InAppNotification } from '@/lib/types';
 import { Bell, BellOff, X } from 'lucide-react';
 
@@ -28,12 +28,29 @@ export default function NotificationSidebar({
   onOpen: () => void;
 }) {
   const [open, setOpen] = useState(false);
+  const sidebarRef = useRef<HTMLDivElement>(null);
 
   // Call onOpen only when opening, avoiding useEffect
   const handleOpen = () => {
-    setOpen(true);
+    setOpen(!open);
     onOpen();
   };
+
+  useEffect(() => {
+    if (!open) return
+
+    function handleClickOutside(event: MouseEvent) {
+      if (sidebarRef.current && !sidebarRef.current.contains(event.target as Node)) {
+        setOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside)
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+
+  }, [open])
 
   return (
     <>
@@ -59,14 +76,14 @@ export default function NotificationSidebar({
           />
           <aside
             className={`fixed top-0 right-0 z-60 h-screen w-65 max-w-full bg-white/85 backdrop-blur-md border-l
-               border-gray-200 dark:bg-slate-900/70 dark:border-slate-700 flex flex-col transition-transform 
-               ${open ? 'translate-x-0 bg-gradient-to-b from-white via-teal-200 to-white' : 'translate-x-full'
-              }`}
+               border-gray-200 dark:bg-slate-900/70 dark:border-slate-700 flex flex-col transition-transform
+               ${open ? 'translate-x-0 bg-gradient-to-b from-white via-teal-200 to-white w-[70vw] lg:w-[30vw]' : 'translate-x-full'
+              }`} ref={sidebarRef}
           >
             <div className="flex items-center justify-between p-4 mt-3  border-gray-200 dark:border-slate-700">
               <h2 className="text-2xl font-semibold">Notifications</h2>
               <button
-                onClick={() => setOpen(false)}
+                onClick={() => setOpen(!open)}
                 aria-label="Close notifications"
                 className="p-1 rounded-md hover:bg-gray-200 dark:hover:bg-slate-800 transition"
               >
@@ -86,7 +103,7 @@ export default function NotificationSidebar({
                   key={n.id}
                   className="relative rounded-md border border-gray-700 dark:border-slate-700 p-3 bg-white/100 backdrop-blur-3xl"
                 >
-                  <span className="absolute top-2 right-2 inline-block rounded-full bg-teal-600 px-2 py-0.5 text-[10px] font-semibold text-white">
+                  <span className="absolute top-2 right-1 inline-block rounded-full bg-teal-600 px-2 py-0.5 text-[8px] lg:text-[9px] text-white">
                     {timeAgo(n.createdAt)}
                   </span>
                   <div className="text-sm font-medium text-black">{n.title}</div>
