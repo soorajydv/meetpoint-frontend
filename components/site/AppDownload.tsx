@@ -45,12 +45,12 @@ export const AppDownload: React.FC = () => {
             <img
                 src="/logo.png"
                 alt="Logo 1"
-                className="absolute top-4 lg:top-10 left-20 w-50 opacity-5"
+                className="absolute top-10 lg:top-10 left-30 w-24 lg:w-52 opacity-5"
             />
             <img
                 src="/logo.png"
                 alt="Logo 2"
-                className="absolute bottom-0 lg:bottom-10 right-50 w-50 opacity-5"
+                className="absolute bottom-5 lg:bottom-10 right-52 lg:right-90 w-24 lg:w-52 opacity-5"
             />
 
             {/* Content above overlay */}
@@ -62,7 +62,7 @@ export const AppDownload: React.FC = () => {
                     <h2 className="text-4xl font-semibold mt-1 dark:text-white ">MeetPoint Apps</h2>
                     <p className="text-xl mt-0 lg:mt-4 text-[#565657]">Your schedules are always with you</p>
                 </div>
-                
+
                 <div className="flex flex-wrap md:flex-col lg:flex-row w-[70vw] justify-center gap-4 mt-10">
                     <GooglePlayButton />
                     <AppStoreButton />
@@ -73,7 +73,7 @@ export const AppDownload: React.FC = () => {
             <motion.img
                 src="/phone-mockup.png"
                 alt="Mobile App Preview"
-                className="absolute right-[-10%] bottom-[-10%] w-34 sm:w-30 lg:w-72"
+                className="absolute right-[-10%] lg:right-[1%] bottom-[-10%] lg:bottom-[10%] w-34 sm:w-30 lg:w-72"
                 initial={{ x: "100%", opacity: 0, rotate: -30 }}
                 animate={isInView ? { x: "0%", opacity: 1, rotate: -15 } : {}}
                 transition={{ duration: 0.8, ease: "easeOut" }}
