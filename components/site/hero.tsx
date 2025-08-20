@@ -46,9 +46,13 @@ export default function Hero({
           </div>
         </div>
         <div aria-hidden className="relative sm:pt-[4rem]">
-          <img
-            src="/Book-online-doctor-appointment-unscreen.gif"
-            className="w-full rounded-xl transition-transform duration-500 hover:-translate-y-1 bg-transparent dark:bg-white"
+          <video
+            src="/meetpoint.mp4"
+            className="w-full rounded-xl transition-transform duration-500 hover:-translate-y-1 bg-transparent"
+            autoPlay
+            loop
+            muted
+            playsInline
           />
         </div>
       </div>
